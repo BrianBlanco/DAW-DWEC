@@ -15,30 +15,55 @@ function numeroFeliz() {
 
     var numeroAComprobar = 1;
 
+    var numeroAComprobarAux;
+
+    var tamañyoNumAComprobar = 0;
+
     var numeroSumado = 0;
 
-    var resultado = "";
+    var resultado = "Los 5 primeros numeros felices son: ";
 
-    var aux;
+    var aux = 1;
     
     while(cantidadNumerosFelices < 5) {
-        aux = 1;
-        numeroSumado = numeroAComprobar;
+        numeroAComprobarAux = numeroAComprobar;
+        while(numeroAComprobarAux != 1 && numeroAComprobarAux != 0) {
+            
+            alert("comprobar " + numeroAComprobarAux);
 
-        while(numeroSumado != 1 || numeroSumado != numeroAComprobar || numeroSumado == 4) {
-            aux *= 10;
-            alert("comprobar " + numeroAComprobar);
-            numeroSumado += Math.pow(numeroSumado % aux, 2);
-            alert("sumado " + numeroSumado);
+            tamañyoNumAComprobar = numeroAComprobarAux.toString().length;
+
+            numeroSumado = 0;
+
+            // numeroSumado += (numeroAComprobarAux - (numeroAComprobarAux % aux)) / 10;
+
+            for (let i = 0; i < tamañyoNumAComprobar; i++) {
+                
+                aux *= 10;
+                alert("Antes: " + numeroAComprobarAux);
+                if(tamañyoNumAComprobar == 1){
+                    numeroSumado += Math.pow(numeroAComprobarAux, 2);
+                } else {
+                    numeroSumado += Math.pow((numeroAComprobarAux - (numeroAComprobarAux % aux)) / 10, 2);
+                }
+                
+                alert("Después: " + numeroSumado);
+            }
+
+            if(numeroAComprobarAux == numeroAComprobar) {
+                break;
+            }
+
+            aux = 1;
         }
 
             resultado += numeroAComprobar + ", ";
 
             alert(resultado);
             numeroAComprobar++;
-            numeroSumado = 0;
-        
-     }
+            alert("comprobar 2: " + numeroAComprobar);
+            numeroAComprobarAux = numeroAComprobar;
+        }
 
      alert(resultado);
 }
