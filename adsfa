@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        var arrayRegEx = new Array(/^[A-Za-z\_\-\.\s\xF1\xD1]+$/,//Nombre
+        /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,//email
+        /^[0-9]{9}[TRWAGMYFPDXBNJZSQVHLCKE]$/i,//DNI
+        /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/,//password
+        );
+        
+        function comprobar(valor, elemento) {
+            //var reg = /^[A-Za-z\_\-\.\s\xF1\xD1]+$/;
+            //alert(elemento);
+            switch(elemento) {
+                case 'nombre':
+                    reg = arrayRegEx[0];
+                break;
+
+                case 'apellido':
+                    reg = arrayRegEx[0];
+                break;
+
+                case 'email':
+                    reg = arrayRegEx[1];
+                break;
+
+                case 'dni':
+                    reg = arrayRegEx[2];
+                break;
+
+                case 'password':
+                    reg = arrayRegEx[3];
+                break;
+
+                case 'email':
+                    reg = arrayRegEx[1];
+                break;
+
+            }
+
+            if (reg.test(valor)) {
+                    document.getElementById(elemento).style.backgroundColor = 'white';
+            } else {
+                document.getElementById(elemento).style.backgroundColor = 'red';
+            }
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <form action="">
+        <label for="">Nombre</label>
+        <input type="text" name="Nombre" id="nombre" onblur="comprobar(this.value, 'nombre')">
+        <br>
+        
+        <label for="">Apellido</label>
+        <input type="text" name="Apellido" id="apellido" onblur="comprobar(this.value, 'apellido')">
+        <br>
+        
+        <label for="">e-mail</label>
+        <input type="text" name="email" id="email" onblur="comprobar(this.value, 'email')">
+        <br>
+        
+        <label for="">DNI</label>
+        <input type="text" name="DNI" id="dni" onblur="comprobar(this.value, 'dni')">
+        <br>
+
+        <label for="">password</label>
+        <input type="password" name="password" id="password" onblur="comprobar(this.value, 'password')">
+        <br>
+        <label for="">Repetir password</label>
+        <input type="password" name="repetirPassword" id="repetirPassword">
+        <br>
+
+        <label for="">IP Equipo</label>
+        <input type="text" name="ipequipo" id="ipequipo">
+        <br>
+        <button type="button" name="submit" id="submit">Submit</button>
+    </form>
+</body>
+</html>

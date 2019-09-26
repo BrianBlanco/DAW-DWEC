@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="./JS/onclick.js"></script>
+
+    </head>
+<body>
+    <form action="">
+        <label for="">Nombre</label>
+        <input type="text" name="Nombre" id="nombre" onblur="comprobar(this, 'nombre')">
+        <br>
+        
+        <label for="">Apellido</label>
+        <input type="text" name="Apellido" id="apellido" onblur="comprobar(this, 'apellido')">
+        <br>
+        
+        <label for="">e-mail</label>
+        <input type="text" name="email" id="email" onblur="comprobar(this, 'email')">
+        <br>
+        
+        <label for="">DNI</label>
+        <input type="text" name="DNI" id="dni" onblur="comprobar(this, 'dni')">
+        <br>
+
+        <label for="">password</label>
+        <input type="password" name="password" id="password" onblur="comprobar(this, 'password')">
+        <br>
+        <label for="">Repetir password</label>
+        <input type="password" name="repetirPassword" id="repetirPassword" onblur="comprobar(this, 'repassword')">
+        <br>
+
+        <label for="">IP Equipo</label>
+        <input type="text" name="ipequipo" id="ipequipo">
+        <br>
+        <button type="button" name="submit" id="submit">Submit</button>
+    </form>
+</body>
+</html>

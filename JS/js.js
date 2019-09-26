@@ -27,7 +27,7 @@ function numeroFeliz() {
     
     while(cantidadNumerosFelices < 5) {
         numeroAComprobarAux = numeroAComprobar;
-        while(numeroAComprobarAux != 1 && numeroAComprobarAux != 0) {
+        while(numeroAComprobarAux != 1 && numeroAComprobarAux != 0 && numeroAComprobarAux != 4) {
             
             alert("comprobar " + numeroAComprobarAux);
 
