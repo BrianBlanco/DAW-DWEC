@@ -1,8 +1,9 @@
 
- var arrayRegEx = new Array(/^[A-Za-z\_\-\.\s\xF1\xD1]+$/,//Nombre
+ var arrayRegEx = new Array(/^[A-Za-z+\s]+$/,//Nombre
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,//email
-    /^[0-9]{9}[TRWAGMYFPDXBNJZSQVHLCKE]$/i,//DNI
+    /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i,//DNI
     /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,//password
+    /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/ // IP
     );
 
     function comprobar(valor, elemento) {
@@ -18,37 +19,43 @@
             break;
 
             case 'email':
-                reg = arrayRegEx[1];
+                test(valor, arrayRegEx[1]);
             break;
 
             case 'dni':
-                reg = arrayRegEx[2];
+                    test(valor, arrayRegEx[2]);
             break;
 
             case 'password':
-                reg = arrayRegEx[3];
+                    test(valor, arrayRegEx[3]);
             break;
 
             case 'repassword':
-                reg = arrayRegEx[3];
-                testPassword(valor, valor.value);
-                
+                testPassword(valor);
             break;
 
-        }
-        
-        if (reg.test(valor.value)) {
-                valor.style.backgroundColor = 'white';
-        } else {
-                valor.style.backgroundColor = 'red';
+            case 'ipequipo':
+                    test(valor, arrayRegEx[4]);
+            break;
         }
 
     }
-function testPassword(valor, password) {
-    
-    if (document.getElementById("password").value == password) {
-        valor.style.backgroundColor = 'white';
-    } else {
-        valor.style.backgroundColor = 'red';
-    } 
-}
+
+    function test(valor, reg) {
+        if (reg.test(valor.value)) {
+            valor.style.backgroundColor = 'white';
+        } else {
+            valor.style.backgroundColor = 'red';
+        }
+    }
+    function testPassword(valor) {
+        if (document.getElementById("password").value == valor.value) {
+            valor.style.backgroundColor = 'white';
+        } else {
+            valor.style.backgroundColor = 'red';
+        } 
+    }
+
+    function alertButton() {
+        alert("Enviado");
+    }

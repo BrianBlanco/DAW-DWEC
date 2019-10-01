@@ -1,0 +1,44 @@
+h1 {
+    color: white;
+    margin-left: 45%;
+    padding-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+}
+
+form {
+    background-color: #D3D3D3;
+    margin-left: 20%;
+    width: 50%;
+    padding-right: 10%;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+input {
+    margin-bottom: 30px;
+    width: calc(70% - 20px);
+    padding:5px;
+    float: left;
+    border:1px solid gray;
+    box-shadow: inset 2px 3px 2px #888888;
+}
+
+label {
+    width:calc(30% - 10px);
+    padding:5px;
+    float: left;
+    text-align:right;
+    
+}
+
+button {
+    background-color: blue;
+    border: none;
+    color: white;
+    margin-left: 55%;
+    padding: 2%;
+    margin-bottom: 50px;
+}
+

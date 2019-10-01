@@ -5,39 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link rel="stylesheet" href="./CSS/style.css">
     <script src="./JS/onclick.js"></script>
 
     </head>
 <body>
     <form action="">
-        <label for="">Nombre</label>
-        <input type="text" name="Nombre" id="nombre" onblur="comprobar(this, 'nombre')">
-        <br>
+        <h1>Formulario Total</h1>
+        <div class="contenedorTexto">
+            <label for="">Nombre:</label>
+            <input type="text" name="Nombre" id="nombre" onblur="comprobar(this, 'nombre')">
+            <div style="clear:both"></div>
+        </div>
         
-        <label for="">Apellido</label>
+        <label for="">Apellido:</label>
         <input type="text" name="Apellido" id="apellido" onblur="comprobar(this, 'apellido')">
-        <br>
-        
-        <label for="">e-mail</label>
+  
+
+        <label for="">e-mail:</label>
         <input type="text" name="email" id="email" onblur="comprobar(this, 'email')">
-        <br>
-        
-        <label for="">DNI</label>
+
+        <label for="">DNI:</label>
         <input type="text" name="DNI" id="dni" onblur="comprobar(this, 'dni')">
-        <br>
 
-        <label for="">password</label>
+        <label for="">password:</label>
         <input type="password" name="password" id="password" onblur="comprobar(this, 'password')">
-        <br>
-        <label for="">Repetir password</label>
+        <label for="">Repetir password:</label>
         <input type="password" name="repetirPassword" id="repetirPassword" onblur="comprobar(this, 'repassword')">
-        <br>
 
-        <label for="">IP Equipo</label>
-        <input type="text" name="ipequipo" id="ipequipo">
-        <br>
-        <button type="button" name="submit" id="submit">Submit</button>
+        <label for="">IP Equipo:</label>
+        <input type="text" name="ipequipo" id="ipequipo" onblur="comprobar(this, 'ipequipo')">
+
+        <button type="button" name="enviar" id="submit" onclick="alertButton()">Enviar</button>
     </form>
 </body>
 </html>
