@@ -83,12 +83,3 @@
             alert("Todo correcto, datos enviados!");
         }
     }
-
-
-
-    function submitAction() {
-        if (array.cont) {
-            
-        }
-    }
-
