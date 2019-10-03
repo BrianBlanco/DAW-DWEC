@@ -5,14 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script text="text/javascript" src="./JS/js.js"></script>
+    <style>
+        div {
+            border: 1px solid red;
+            width: 45%;
+            margin-left: 50px;
+            display: inline-block;
+            overflow: scroll;
+            height: 400px;
+        }
+        
+    </style>
+
+    <script>
+    document.addEventListener("keypress", function(event) {
+        if (event.keyCode == 32) {
+            crearTexto();
+        }
+    })
+</script>
 </head>
 <body>
+
+    <div id="padreD">
+
+    </div>
+
+    <div id="padreI">
+
+    </div>
     
-    <input type="button" value="Ejercicio 1" onclick="pedirArray()">
-    <input type="button" value="Ejercicio 2" onclick="numeroFeliz()">
-    <input type="button" value="Ejercicio 3" onclick="pedirArray()">
-    <input type="button" value="Ejercicio 4" onclick="pedirArray()">
-    <input type="button" value="Ejercicio 5" onclick="pedirArray()">
+    <!--
+        <button id="submit" onclick="crearTexto()">Se tenía que decir y se dijo</button>
+    -->
+    <script>
+        function crearTexto() {
+            var padre;
+            var padreD = document.getElementById("padreD");
+            var padreI = document.getElementById("padreI");
+
+            if (padreD.childElementCount > padreI.childElementCount) {
+                padre = padreI;
+            } else {
+                padre = padreD;
+            }
+
+            
+            var p = document.createElement("p");
+            var texto = document.createTextNode("uwu > owo");
+            p.appendChild(texto);
+            padre.appendChild(p);
+        }
+    </script>
 </body>
 </html>
