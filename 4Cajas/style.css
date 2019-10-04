@@ -1,0 +1,28 @@
+#cuadros div {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+
+    box-shadow: 5px -2px 1px #000;
+}
+
+.rojo {
+    background-color: red;
+}
+
+.azul {
+    background-color: blue;
+}
+
+.verde {
+    background-color: green;
+}
+
+.negro {
+    background-color: black;
+}
+
+.boton {
+    margin-left: 110px;
+    margin-right: 115px;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @import url(./style.css);
+    </style>
+    <script src="./script.js"></script>
+</head>
+<body>
+    <div id="cuadros">
+        <div class="cuadrados rojo" onmousemove="alApuntarAlDiv(this)" onmouseout="alNoApuntarAlDiv(this)" onmousedown="cambiarSombra(this)"></div>
+        <div class="cuadrados azul" onmousemove="alApuntarAlDiv(this)" onmouseout="alNoApuntarAlDiv(this)"></div>
+        <div class="cuadrados verde" onmousemove="alApuntarAlDiv(this)" onmouseout="alNoApuntarAlDiv(this)"></div>
+        <div class="cuadrados negro" onmousemove="alApuntarAlDiv(this)" onmouseout="alNoApuntarAlDiv(this)"></div>
+
+    </div>
+
+    <div id="botones">
+        <button class="boton" onclick="eliminarCuadrado('rojo', this)">Eliminar</button>
+        <button class="boton" onclick="eliminarCuadrado('azul', this)">Eliminar</button>
+        <button class="boton" onclick="eliminarCuadrado('verde', this)">Eliminar</button>
+        <button class="boton" onclick="eliminarCuadrado('negro', this)">Eliminar</button>
+    </div>
+</body>
+</html>
