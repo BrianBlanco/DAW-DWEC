@@ -22,7 +22,10 @@
         if (event.keyCode == 32) {
             crearTexto();
         }
-    })
+        /*if (event.keyCode == 65) {
+            millones();
+        }*/
+    });
 </script>
 </head>
 <body>
@@ -55,6 +58,11 @@
             var texto = document.createTextNode("uwu > owo");
             p.appendChild(texto);
             padre.appendChild(p);
+        }
+        function millones() {
+            for (let index = 0; index < 150000000; index++) {
+                document.write("No me volveré a ir antes de la hora"); 
+            }
         }
     </script>
 </body>
