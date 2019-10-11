@@ -9,20 +9,21 @@ window.onload = function() {
 
 
     function botonApretado() {
-        var botonApretado = this.innerText;
+        var textoBoton = this.innerText;
 
-        alert(parseInt(botonApretado));
+        alert(parseInt(textoBoton));
 
-        hacerOperacion(botonApretado);
+        //hacerOperacion(textoBoton);
 
-        anyadirTexto(botonApretado);
+        anyadirTexto(textoBoton);
     }
 
-    function anyadirTexto(boton) {
+    function anyadirTexto(textoBoton) {
+        alert(textoBoton);
         if (pantalla.value != 0) {
-            pantalla.value += boton.innerText;
+            pantalla.value += textoBoton;
         } else {
-            pantalla.value = boton.innerText;
+            pantalla.value = textoBoton;
         }
     }
 
