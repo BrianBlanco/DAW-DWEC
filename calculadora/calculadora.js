@@ -1,3 +1,8 @@
+var primerNumero = 0;
+var segundoNumero = 0;
+var tipoOperacion;
+var booleanoOperacion;
+
 window.onload = function() {
     var pantalla = document.getElementById('inputPantalla');
 
@@ -7,33 +12,118 @@ window.onload = function() {
         botones[i].addEventListener("click", botonApretado, false);
     }
 
-
     function botonApretado() {
         var textoBoton = this.innerText;
 
-        alert(parseInt(textoBoton));
-
         //hacerOperacion(textoBoton);
-
-        anyadirTexto(textoBoton);
-    }
-
-    function anyadirTexto(textoBoton) {
-        alert(textoBoton);
-        if (pantalla.value != 0) {
-            pantalla.value += textoBoton;
+        if (isNaN(textoBoton)) {
+            hacerOperacion(textoBoton);
+            booleanoOperacion = true;
         } else {
-            pantalla.value = textoBoton;
+            booleanoOperacion = false;
+            anyadirTexto(textoBoton);
         }
     }
 
+    function anyadirTexto(textoBoton) {
+            if (pantalla.value != 0) {
+                pantalla.value += textoBoton;
+            } else {
+                pantalla.value = textoBoton;
+            }          
+    }
+
     function hacerOperacion(botonApretado) {
-        if (botonApretado.innerText == "C") {
-            borrarPantalla();
+
+        if (this.primerNumero == 0) {
+            this.primerNumero = pantalla.value;
+        } else {
+            this.segundoNumero = parseInt(pantalla.value.split(this.tipoOperacion, 2)[1]);
+        }
+
+        switch (botonApretado) {
+            case "C":
+                borrarPantalla();
+                break;
+
+            case "%":
+                this.tipoOperacion = "%";
+                break;
+
+            case "«":
+                borrarUnCaracter();
+                break;
+
+            case "/":
+                this.tipoOperacion = "/";
+                break;
+
+            case "x":
+                this.tipoOperacion = "*";
+                break;
+
+            case "-":
+                this.tipoOperacion = "-";
+                break;
+
+            case "+":
+                this.tipoOperacion = "+";
+                break;
+
+            case "=":
+                calcularResultado();
+                break;
+
+            case "()":
+                ponerParentesis();
+                break;
+        }
+
+        if (comprobarIntegridadPantalla()) {
+            anyadirTexto(this.tipoOperacion);
         }
     }
 
     function borrarPantalla() {
-        pantalla.value = "";
+        pantalla.value = "0";
+    }
+
+    function borrarUnCaracter() {
+        pantalla.value = pantalla.value.substring(0, pantalla.value.length - 1);
+
+        if (pantalla.value == "") {
+            pantalla.value = "0";
+        }
+    }
+
+    function comprobarIntegridadPantalla() {
+        let hacerOperacion = true;
+        
+        if (isNaN(pantalla.value)) {
+            calcularResultado();
+        } else if (pantallaACero()) {
+            hacerOperacion = false;
+        } else if (booleanoOperacion) {
+            hacerOperacion = false;
+        }
+
+        return hacerOperacion;
+    }
+
+    function pantallaACero() {
+        if (pantalla.value == "0") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function calcularResultado() {
+        let stringAEvaluar = this.primerNumero + "" + this.tipoOperacion + "" + this.segundoNumero;
+        let resultado = eval(stringAEvaluar);
+        pantalla.value = resultado;
+        this.primerNumero = resultado;
+        this.tipoOperacion = "";
+        this.booleanoOperacion = true;
     }
 };
