@@ -137,11 +137,6 @@ window.onload = function() {
         // Comprobamos que el último caracter no sea un operando
         if (isNaN(saberUltimoCaracter()) && saberUltimoCaracter() != ")") {
             borrarUnCaracter();
-            
-            if (tipoOperacion == "*") {
-                tipoOperacion = "x";
-            }
-            
             pantalla.value += tipoOperacion;
             hacerOperacion = false;
 
@@ -165,7 +160,7 @@ window.onload = function() {
 
         // Nos cercioramos que no se pueda dividir entre 0
         if (pantalla.value.includes("/0")) {
-            alert("No se puede dividir entre 0, retrasado");
+            alert("No se puede dividir entre 0");
         } else {
 
             // No dejamos que se hagan operaciones si el último carácter
@@ -173,7 +168,8 @@ window.onload = function() {
             if (!isNaN(saberUltimoCaracter())) {
 
                 // Realizamos la operación y lo metemos en la variable "resultado"
-                let resultado = eval(stringEval.split("x").join("*").split("%").join("/100*"));
+                let resultado = eval(stringEval.replace("x", "*").replace("%", "/100*"));
+                
                 
                 // Mostramos el valor del resultado en la pantalla
                 pantalla.value = resultado;
