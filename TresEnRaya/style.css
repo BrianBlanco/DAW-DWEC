@@ -1,0 +1,33 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+*:not(body):not(html) {
+    border: 2px solid #000;
+}
+
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 70vw;
+    height: 90vh;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 5vh;
+
+}
+
+.cuadrado {
+    border: 2px solid #000;
+    background-color: #33e9ff;
+}
+
+.fichaJugador {
+    background-image: url("https://media.tenor.com/images/13b606711e06a06893b332fd1f41122f/tenor.gif");
+}
+
+.fichaMaquina {
+    background-image: url("https://media0.giphy.com/media/IB9foBA4PVkKA/giphy.gif");
+}
