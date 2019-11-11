@@ -1,0 +1,17 @@
+tablero {
+    height: 80vh;
+    width: 70vw;
+    margin: 0 auto;
+    margin-top: 10vh;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+}
+
+.celda {
+    border: 1px solid red;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    
+}
