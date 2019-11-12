@@ -13,5 +13,20 @@ tablero {
     display: grid;
     align-content: center;
     justify-content: center;
-    
+}
+
+.bordeArriba {
+    border-top: 4px solid red;
+}
+
+.bordeDerecha {
+    border-right: 4px solid red;
+}
+
+.bordeIzquierda {
+    border-left: 4px solid red;
+}
+
+.bordeAbajo {
+    border-bottom: 4px solid red;
 }

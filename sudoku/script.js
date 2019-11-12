@@ -14,6 +14,9 @@ function init() {
         // Creamos el elemento
         nuevoDiv = document.createElement("div");
 
+        // Agregamos las clases necesarias para rodear con mayor intensidad los bordes
+        ponerBordesCeldas(nuevoDiv, i);
+
         // Le añadimos la clase "celda"
         nuevoDiv.classList.add("celda");
 
@@ -21,8 +24,12 @@ function init() {
         nuevoDiv.dataset.indice = i + 1;
 
         // Ponemos el valor en cada una de las celdas según la plantilla
-        nuevoDiv.innerText = plantilla[parseInt(i / 9)][parseInt(i % 9)];
+        let valorCasilla = plantilla[parseInt(i / 9)][parseInt(i % 9)];
 
+        if (valorCasilla != 0) {
+            nuevoDiv.innerText = valorCasilla;    
+        }
+        
         // Se lo añadimos como hijo al tablero
         tablero.appendChild(nuevoDiv);
         
@@ -59,6 +66,25 @@ function elegirPlantilla() {
 
     // Devuelve la plantilla modificada
     return plantilla;
+}
+
+function ponerBordesCeldas(nuevoDiv, i) {
+    if (parseInt(parseInt(i / 9) % 3) == 0) {
+        nuevoDiv.classList.add("bordeArriba");
+    }
+
+    if (parseInt(parseInt(i % 9) % 3) == 0) {
+        nuevoDiv.classList.add("bordeIzquierda");
+    }
+
+    if (parseInt((i + 1) % 9) == 0) {
+        nuevoDiv.classList.add("bordeDerecha");
+    }
+
+    if (parseInt(i / 9) == 8) {
+        nuevoDiv.classList.add("bordeAbajo");
+    }
+    
 }
 
 window.onload = init;
