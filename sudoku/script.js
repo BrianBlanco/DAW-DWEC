@@ -26,13 +26,14 @@ function init() {
         // Ponemos el valor en cada una de las celdas según la plantilla
         let valorCasilla = plantilla[parseInt(i / 9)][parseInt(i % 9)];
 
+        // Si la casilla contiene en valor "0", entonces no escribe nada
         if (valorCasilla != 0) {
-            nuevoDiv.innerText = valorCasilla;    
+            nuevoDiv.innerText = valorCasilla;
         }
-        
+
         // Se lo añadimos como hijo al tablero
         tablero.appendChild(nuevoDiv);
-        
+
     }
 }
 
@@ -57,9 +58,14 @@ function elegirPlantilla() {
 
     // Mientras que no hayan 17 celdas vacías (igualdas a 0), coge una posición
     // aleatoria y la convierte a 0 si no es ya 0
-    while (casillasVacias < 17) {
-        if (plantilla[parseInt(Math.random() * (8 - 0) + 0)][parseInt(Math.random() * (8 - 0) + 0)] != 0) {
-            plantilla[parseInt(Math.random() * (8 - 0) + 0)][parseInt(Math.random() * (8 - 0) + 0)] = 0;
+    let randomI;
+    let randomJ;
+    while (casillasVacias < 64) {
+        randomI = parseInt(Math.random() * (9 - 0) + 0);
+        randomJ = parseInt(Math.random() * (9 - 0) + 0);
+
+        if (plantilla[randomI][randomJ] != 0) {
+            plantilla[randomI][randomJ] = 0;
             casillasVacias++;
         }
     }
@@ -84,7 +90,7 @@ function ponerBordesCeldas(nuevoDiv, i) {
     if (parseInt(i / 9) == 8) {
         nuevoDiv.classList.add("bordeAbajo");
     }
-    
-}
 
+}
+// https://codepen.io/pavlovsk/pen/XmjPOE
 window.onload = init;
