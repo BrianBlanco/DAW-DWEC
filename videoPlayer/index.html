@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @import url("./css/style.css");
+    </style>
+</head>
+
+<body>
+
+    <!-- Contenedor de todos los elementos -->
+    <div id="contenedor">
+        <!-- Contenedor del video central de la pantalla -->
+        <div id="contenedorVideoPrincipal">
+            <video id="videoPrincipal" src="./videos/pineapple" autoplay="true"></video>
+            <div id="controles">
+                <button id="botonPlay" class="botonControles">PLAY</button>
+            </div>
+        </div>
+        
+        <!-- Contenedor de los videos laterales en la derecha -->
+        <div id="videosLateral"></div>
+    </div>
+
+    <script src="./script/script.js"></script>
+</body>
+
+</html>

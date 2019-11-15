@@ -1,0 +1,19 @@
+#contenedor {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    grid-template-areas: "videoPrincipal videoPrincipal videosLateral";
+    
+}
+
+#videoPrincipal {
+    margin-left: 20vw;
+    position: absolute;
+    float: left;
+}
+
+.botonControles {
+    display: none;
+    position: absolute;
+    float: left;
+}
