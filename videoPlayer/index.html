@@ -17,14 +17,20 @@
     <div id="contenedor">
         <!-- Contenedor del video central de la pantalla -->
         <div id="contenedorVideoPrincipal">
-            <video id="videoPrincipal" src="./videos/pineapple" autoplay="true"></video>
+            <video id="videoPrincipal" src="./videos/0.mp4" type="video/mp4" onclick="play()" data--idvideo="./videos/tmbnail0.webp"></video>
             <div id="controles">
-                <button id="botonPlay" class="botonControles">PLAY</button>
+                <div id="botonPlay" class="botonControles" onclick="play()"></div>
+                <div id="botonMute" class="botonControles" onclick="mute()"></div>
+                <div id="botonTiempoAtras" class="botonControles" onclick="atrasar()"></div>
+                <div id="botonTiempoAdelante" class="botonControles" onclick="adelantar()"></div>
+                
             </div>
         </div>
         
         <!-- Contenedor de los videos laterales en la derecha -->
-        <div id="videosLateral"></div>
+        <div id="videosLateral">
+
+        </div>
     </div>
 
     <script src="./script/script.js"></script>

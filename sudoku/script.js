@@ -6,7 +6,6 @@ function init() {
     // Funcion que nos devuelve una plantilla aleatoria
     let plantilla = elegirPlantilla();
     let tamanyoTablero = 9 * 9;
-    let contador = 1
 
     // Creamos el tablero y le asignamos un número a cada una de las celdas
     for (let i = 0; i < tamanyoTablero; i++) {
@@ -19,9 +18,6 @@ function init() {
 
         // Le añadimos la clase "celda"
         nuevoDiv.classList.add("celda");
-
-        // Le agregamos el data.indice con el número del contador empezando en 1
-        nuevoDiv.dataset.indice = i + 1;
 
         // Ponemos el valor en cada una de las celdas según la plantilla
         let valorCasilla = plantilla[parseInt(i / 9)][parseInt(i % 9)];
@@ -42,7 +38,7 @@ function init() {
 function elegirPlantilla() {
 
     // Primera plantilla
-    let plantilla = [
+    let plantilla1 = [
         [4, 9, 5, 2, 8, 7, 6, 3, 1],
         [8, 7, 6, 9, 1, 3, 5, 4, 2],
         [3, 2, 1, 6, 5, 4, 9, 8, 7],
@@ -54,12 +50,32 @@ function elegirPlantilla() {
         [1, 3, 4, 5, 9, 6, 7, 2, 8]
     ];
 
+    let plantilla2 = [
+        [8, 3, 5, 4, 1, 6, 9, 2, 7],
+        [2, 9, 6, 8, 5, 7, 4, 3, 1],
+        [4, 1, 7, 2, 9, 3, 6, 5, 8],
+        [5, 6, 9, 1, 3, 4, 7, 8, 2],
+        [1, 2, 3, 6, 7, 8, 5, 4, 9],
+        [7, 4, 8, 5, 2, 9, 1, 6, 3],
+        [6, 5, 2, 7, 8, 1, 3, 9, 4],
+        [9, 8, 1, 3, 4, 5, 2, 7, 6],
+        [3, 7, 4, 9, 6, 2, 8, 1, 5]
+    ];
+
+    let plantilla;
+    if (parseInt(Math.random() * (2 - 0) + 0) == 0) {
+        plantilla = plantilla1;
+    } else {
+        plantilla = plantilla2;
+    }
+
     let casillasVacias = 0;
 
     // Mientras que no hayan 17 celdas vacías (igualdas a 0), coge una posición
     // aleatoria y la convierte a 0 si no es ya 0
     let randomI;
     let randomJ;
+
     while (casillasVacias < 64) {
         randomI = parseInt(Math.random() * (9 - 0) + 0);
         randomJ = parseInt(Math.random() * (9 - 0) + 0);
