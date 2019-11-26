@@ -7,10 +7,10 @@ function init() {
 
     // Inicializamos la variable "video"
     obtenerVideoPrincipal();
-    
+
     // Creamos cada uno de los videos de la barra lateral derecha
     let nuevoDiv;
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 5; i++) {
 
         // Creamos un elemento img y le damos valores como el thumbnail y la
         // ruta local del video
@@ -76,9 +76,21 @@ function reiniciarVideo() {
 }
 
 // Funcion para establecer el volumen con una barra lateral
-function SetVolume(val) {
-    var newVolume = val / 10;
-        video.volume = newVolume;
+function setVolume(val) {
+    let newVolume = val / 10;
+    video.volume = newVolume;
+}
+
+function fullScreen() {
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+    }
 }
 
 // Funcion que cambia el video principal segun en cual hagamos click
@@ -98,7 +110,8 @@ function cambiarVideo(nuevoVideo) {
 
     // Recargamos el video y lo reproducimos
     video.load();
-    video.play();
+
+    play();
 }
 
 // La funcion init se lanzara al cargarse la pagina
