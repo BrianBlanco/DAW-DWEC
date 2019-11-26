@@ -1,118 +1,50 @@
-// Declaramos el video fuera del init para hacerlo global
-var video;
+<!DOCTYPE html>
+<html lang="en">
 
-function init() {
-    // Variable con la barra derecha que tiene los videos
-    const videosLateral = document.getElementById("videosLateral");
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @import url("./css/style.css");
+    </style>
+</head>
 
-    // Inicializamos la variable "video"
-    obtenerVideoPrincipal();
+<body>
 
-    // Creamos cada uno de los videos de la barra lateral derecha
-    let nuevoDiv;
-    for (let i = 1; i <= 5; i++) {
+    <!-- Contenedor de todos los elementos -->
+    <div id="contenedor">
+        <!-- Contenedor del video central de la pantalla -->
+        <div id="contenedorVideoPrincipal">
+            <video id="videoPrincipal" src="./videos/0.mp4" type="video/mp4" onclick="play()"
+                data--idvideo="./videos/tmbnail0.webp"></video>
+            <div id="controles">
+                <div id="botonPlay" class="botonControles" onclick="play()"></div>
+                <div id="botonMute" class="botonControles" onclick="mute()"></div>
+                <div id="botonTiempoAtras" class="botonControles" onclick="atrasar()"></div>
+                <div id="botonTiempoAdelante" class="botonControles" onclick="adelantar()"></div>
+                <div id="botonReiniciarVideo" class="botonControles" onclick="reiniciarVideo()"></div>
+                <div id="fullScreen" class="botonControles" onclick="fullScreen()"></div>
+                
+                <!--
+                <div id="botonMenosVolumen" class="botonControles" onclick="menosVolumen()"></div>
+                <div id="botonMasVolumen" class="botonControles" onclick="masVolumen()"></div>
+                -->
+                <input id="Volume" type="range" onmouseup="setVolume(this.value)" onkeydown="setVolume(this.value)"
+                    min="1" max="10" step="1">
+                <meter min="0" max="100" low="25" high="75" optimum="100" value="75">
 
-        // Creamos un elemento img y le damos valores como el thumbnail y la
-        // ruta local del video
-        nuevoDiv = document.createElement("img");
-        nuevoDiv.src = "./videos/tmbnail" + i + ".webp";
-        nuevoDiv.dataset.Idvideo = "./videos/" + i + ".mp4";
+            </div>
+        </div>
 
-        // Le damos un evento onclick a los videos laterales
-        nuevoDiv.onclick = function () {
-            cambiarVideo(this);
-        }
+        <!-- Contenedor de los videos laterales en la derecha -->
+        <div id="videosLateral">
 
-        // Le agregamos la clase videosLaterales y se lo ponemos como hijo
-        // al div videosLateral
-        nuevoDiv.classList.add("videosLaterales");
-        videosLateral.appendChild(nuevoDiv);
-    }
-}
+        </div>
+    </div>
 
-// Funcion que pausa o continua el video cambiando el icono segun play o pause
-function play() {
-    const botonPlay = document.getElementById("botonPlay");
-    if (video.paused) {
-        video.play();
-        botonPlay.style.backgroundImage = 'url("./iconos/pause.svg")';
-    } else {
-        video.pause();
-        botonPlay.style.backgroundImage = 'url("./iconos/play.svg")';
-    }
-}
+    <script src="./script/script.js"></script>
+</body>
 
-// Funcion para adelantar 10 segundos de video
-function adelantar() {
-    video.currentTime += 10;
-}
-
-// Funcion para atrasar 10 segundos de video
-function atrasar() {
-    video.currentTime -= 10;
-}
-
-// Funcion para mutear el video cambiando el icono si esta muteado o no
-function mute() {
-    const botonMute = document.getElementById("botonMute");
-
-    if (video.muted) {
-        video.muted = false;
-        botonMute.style.backgroundImage = 'url("./iconos/unmuted.svg")';
-    } else {
-        video.muted = true;
-        botonMute.style.backgroundImage = 'url("./iconos/mute.svg")';
-    }
-}
-
-// Inicializar la variable video con el video principal
-function obtenerVideoPrincipal() {
-    video = document.getElementById("videoPrincipal");
-}
-
-// Funcion para poner el video desde el segundo 0
-function reiniciarVideo() {
-    video.currentTime = 0;
-}
-
-// Funcion para establecer el volumen con una barra lateral
-function setVolume(val) {
-    let newVolume = val / 10;
-    video.volume = newVolume;
-}
-
-function fullScreen() {
-    if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
-    }
-}
-
-// Funcion que cambia el video principal segun en cual hagamos click
-function cambiarVideo(nuevoVideo) {
-
-    // Cogemos el link local y la miniatura del video principal
-    let srcVideoPrincipal = video.src;
-    let thumbnailVideoLateral = video.getAttribute("data--idvideo");
-
-    // Asignamos los valores del video pulsado al video principal
-    video.src = nuevoVideo.getAttribute("data--idvideo");
-    video.dataset.Idvideo = nuevoVideo.src;
-
-    // Asignamos los valores del video principal al video pulsado
-    nuevoVideo.src = thumbnailVideoLateral;
-    nuevoVideo.dataset.Idvideo = srcVideoPrincipal;
-
-    // Recargamos el video y lo reproducimos
-    video.load();
-
-    play();
-}
-
-// La funcion init se lanzara al cargarse la pagina
-window.onload = init;
+</html>
