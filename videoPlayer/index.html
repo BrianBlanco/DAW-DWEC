@@ -17,6 +17,10 @@
     <div id="contenedor">
         <!-- Contenedor del video central de la pantalla -->
         <div id="contenedorVideoPrincipal">
+            <div id="anuncio">
+                <div id="equisAnuncio"></div>
+                <p id="contadorAnuncio"></p>
+            </div>
             <video id="videoPrincipal" src="./videos/0.mp4" type="video/mp4" onclick="play()"
                 data--idvideo="./videos/tmbnail0.webp"></video>
             <div id="controles">
@@ -31,8 +35,7 @@
                 -->
                 <input id="Volume" type="range" onmouseup="SetVolume(this.value)" onkeydown="SetVolume(this.value)"
                     min="1" max="10" step="1">
-                <meter min="0" max="100" low="25" high="75" optimum="100" value="75">
-
+                <!--<meter min="0" max="100" low="25" high="75" optimum="100" value="75">-->
             </div>
         </div>
 
