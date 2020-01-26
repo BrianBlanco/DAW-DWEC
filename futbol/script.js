@@ -1,37 +1,45 @@
-var jsonObj;
+var jugadores;
 function cargar() {
     //let campos = document.querySelectorAll(".campo").childs;
     //console.log(campos);
 
     peticion();
+    crearCampos();
+}
+function crearCampos() {
 
-    document.getElementById("campo1").addEventListener("dragover", allowDrop);
-    document.getElementById("campo2").addEventListener("dragover", allowDrop);
-    document.getElementById("drag1").addEventListener("dragstart", drag);
-    document.getElementById("campo2").addEventListener("drop", drop);
-    document.getElementById("campo1").addEventListener("drop", drop);
+    document.querySelectorAll(".campo").forEach(function () {
+        this.addEventListener("dragover", allowDrop);
+        this.addEventListener("drop", drop);
+    });
 }
 
-function crearJugadores(jugadores) {
+function crearJugadores() {
     const banquillo = document.getElementById("banquillo");
-
     console.log(jugadores);
 
-
-    for(let jugadorJSON in jugadores){
-
+    for (let i = 0; i < jugadores[2].jugadores.length; i++) {
+        let jugadorJSON = jugadores[2].jugadores[i];
+        console.log(jugadorJSON);
         let jugador = document.createElement("div");
-        console.log(jugadorJSON[2]);
         jugador.classList.add("jugador");
-        jugador.id = jugadorJSON.id;
-        jugador.nombre = jugadorJSON.nombre;
+        jugador.id = jugadorJSON.idJugador;
+        jugador.nombre = jugadorJSON.nombreJugador;
+        jugador.draggable = true;
+        jugador.innerText =
+            "id: " + jugadorJSON.idJugador +
+            ", nombre: " + jugadorJSON.nombreJugador +
+            ", equipo: " + idEquipo;    
 
-        document.addEventListener("dragstart", drag);
+        jugador.addEventListener("dragstart", drag);
         banquillo.appendChild(jugador);
+
     }
+}
 
-
-
+function resetPlantilla() {
+    document.querySelectorAll(".jugador").forEach(e => e.parentNode.removeChild(e));
+    crearJugadores();
 }
 
 function allowDrop(ev) {
@@ -64,16 +72,11 @@ function drop(ev) {
 
 function peticion() {
 
-
-    let formulario = new FormData();
-    formulario.append("nombre", "brian");
-    formulario.append("apellidos", "giannoni");
-
     let ajax = new XMLHttpRequest();
     ajax.addEventListener("readystatechange", llamada);
 
-    ajax.open('POST', 'http://localhost/futbol/jsonformatter.php', true);
-    ajax.send(formulario);
+    ajax.open('POST', 'http://192.168.1.15/futbol/getJugadores.php', true);
+    ajax.send();
 
 }
 
@@ -81,8 +84,8 @@ function llamada() {
     if (this.readyState == 4 && this.status == 200) {
 
         // Recogemos el json que nos da el PHP, lo parseamos y lo mandamos a crearJugadores()
-        jsonObj = JSON.parse(this.responseText);
-        crearJugadores(jsonObj);
+        jugadores = JSON.parse(this.responseText);
+        crearJugadores();
     }
 }
 

@@ -1,20 +1,17 @@
 <?php
+    function abrirConexion($servidor, $usuario, $password, $baseDatos) {
+        return new mysqli($servidor, $usuario, $password, $baseDatos);
+    }
 
-$DBhost = "localhost";
- $DBuser = "newuser";
- $DBpass = "password";
- $DBname = "futbol";
- 
- try{
-  
-  $DBcon = new PDO("mysql:host=$DBhost;dbname=$DBname",$DBuser,$DBpass);
-  $DBcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  
- }catch(PDOException $ex){
-  
-  die($ex->getMessage());
- }
- 
+    function cerrarConexion($link) {
+        mysqli_close($link);
+    }
 
- 
+    function consultarBD($consulta, $link) {
+        return mysqli_query($link, $consulta);
+    }
+
+    function extraerResultados($result) {
+        return mysqli_fetch_array($result);
+    }
 ?>

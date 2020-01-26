@@ -10,17 +10,21 @@
 </head>
 
 <body>
-    <div id="campo1" class="campo" style="border:1px solid black;width:300px;float:left;height:500px">
-        <div draggable="true" id="drag1" style="width:100%;height:50px;border:1px solid red">pruebas</div>
-        <div id="arriba" style="border:1px solid black;width:300px;float:left;height:250px"></div>
-        <div id="abajo" style="border:1px solid black;width:300px;float:left;height:250px"></div>
-    </div>
-    <div id="campo2" class="campo" style="border:1px solid black;width:300px;float:right;height:500px">
-        <div id="arriba" style="border:1px solid black;width:300px;float:left;height:250px"></div>
-        <div id="abajo" style="border:1px solid black;width:300px;float:left;height:250px"></div>
+    <div id="campo1" class="campo">
+        <div id="arriba"></div>
+        <div id="abajo"></div>
     </div>
 
     <div id="banquillo"></div>
+
+    <div id="campo2" class="campo">
+        <div id="arriba"></div>
+        <div id="abajo"></div>
+    </div>
+
+    <div id="botonBorrar">
+        <button id="borrar" onclick="resetPlantilla()">DELETE</button>
+    </div>
 </body>
 
 </html>
